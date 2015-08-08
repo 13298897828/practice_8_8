@@ -1,32 +1,240 @@
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
 
-# Precompiled Headers
-*.gch
-*.pch
+//
+//  main.m
+//  Lesson_8_8
+//
+//  Created by lanou3g on 15/8/8.
+//  Copyright (c) 2015年 lanou3g. All rights reserved.
+//
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+#import <Foundation/Foundation.h>
+void hah(int a,int b)
+{
+    a = a^b;
+    b = a^b;
+    a = a^b;
+    printf("%d %d\n",a,b);
+}
+void haha(int *p,int *p1)
+{
+    int t = *p;
+    *p = *p1;
+    *p1 = t;
+    
+    printf("%d %d\n",*p,*p1);
+}
+void buff(int a[],int n){
+    
+    for (int i = 0; i < n - 1; i ++) {
+        for (int j = 0 ; j < n - i - 1; j ++) {
+            if (a[j] > a[j+ 1]) {
+                int  t = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = t;
+            }
+        }
+    }
+    for (int i = 0; i < 5; i ++) {
+        printf("%d\t",a[i]);
+    }
+    printf("\n");
+}
+void buffe(int *p,int n){
+    
+    for (int i = 0; i < n - 1; i ++) {
+        for (int j = 0 ; j < n - i - 1; j ++) {
+            
+            if (*p > *(p + 1)) {
+                int t = *p;
+                *p = *(p+1);
+                *(p+1) = t;
+            }
+            
+        }
+    }
+    for (int i = 0; i < 5; i ++) {
+        printf("%d\t",*(p+i));
+    }
+    
+}
+int main(int argc, const char * argv[]) {
+//    int  a = 10;
+//    int *p = &a;
+//    printf("%d\n",a);
+//    printf("%p\n",&a);
+//    printf("%p\n",p);
+//    访问数据的两种方式
+//    1 .直接访问,定义变量,存储数据,通过变量名访问数据
+//    int a = 10;
+//    int c = a;
+//    2.间接访问,通过内存单元地址访问内存中的数据
+//    内存单元的地址 就是指针.
+//    指针变量:就是存储地址(地址)的变量.
+// 类型修饰符 * 指针变量名 = 初值
+//    类型修饰符 : 地址指向内存单元中数据的类型
+//    类型修饰符 + * 指向每种数据类型的指针类型
+//    int * p         =  NULL;   //p 是指针变量  int *是类型. 指针变量 p 存储的是整形的数据
+//    NULL 是空指针,相当于 0,给指针变量赋值用得
+//    float * p1 = NULL;
+//    float a ;
+//    p1 = &a;
+//    *就代表 定义的变量是一个指针,存储的内容是地址.
+//    通过指针访问存储单元 .
+//    取地址符: &   用来获取变量的地址
+//    int a = 100;
+//    p = &a;
+//    printf("变量 a的存储单元地址:%p\n",&a);
+//    printf("%d\n",*p);
+//    printf("变量 a的存储单元地址:%p\n",p);
+//    float * p1 = NULL;
+//    float b = 1.2;
+//    p1 = &b;
+//    printf("变量 b的存储单元地址:%p\n",&b);
+    
+//    int *p = &a;
+//    p= &a; // p 指向了 a 的存储单元.
+//    printf("%p\n",p);
+//    printf("%d\n",*p);
+//    *  取值运算符
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
+//    printf("通过指针p读取数值:%d\n通过变量a取值:%d\n",*p,a);
+//        * p = 22;  //使用指针修改值  a的地址  a 的值也跟着变了
+//    printf("通过指针p读取数值:%d\n通过变量a取值:%d",*p,a);
+//    int i = *p;
+//    & 和 * 是配套使用的.
+//    & 是取变量的存储单元地址
+//    * 是通过地址访问变量的存储单元
+//    int x = 0;
+//    int y = 0;
+//    int *p = NULL;
+//    float * p1 = NULL;
+//    double *  p2 = NULL;
+//    p = &x;
+//    *p = 10;
+//      printf("通过指针p读取数值:%d\n通过变量x取值:%d\n",*p,x);
+//  指针的重定向,从指向x,变到指向y
+//    p = &y;
+//    *p = 20;
+//    printf("通过指针p读取数值:%d\n通过变量x取值:%d\n",*p,x);
+//    printf("%lu\n",sizeof(p));
+//    printf("%lu\n",sizeof(p1));
+//    printf("%lu\n",sizeof(p2));
+//    指针的长度是定长
+#pragma mark    指针的运算
+////    指针只有加减运算
+//    int a = 100;
+//    p = &a;
+//    *(p + 8) = 1;
+//    printf("%p\n",p);
+//    printf("%d\n",*(p + 8));
+    
+    
+//    int a = 10;
+//    int b = 11;
+//    int *p = &a;
+//    //p = &b;
+//    printf("%p \n",p);
+//    p --;
+//    printf("%p ",p++);
+//    第一种 :p - n .从p指向的存储单元 向 低位偏移  n 个 数据类型所占的字节数
+//           p + n就是向高位偏移 ,即向下   p的指向是没有改变的,即p指向的地址没有改变
+//    第二种: p ++ , p -- . 指针向高地址或低地址移动. 移动了一个数据类型所占的字节数. p自身指向的地址改变了
+#pragma mark 数组 and 指针
+//    1.指针可以指向变量,读取变量的存储单元中的数据
+//    2.可以指向数组元素,数组在内存中开辟的空间是连续的,并且每个数据元素所占的 字节数 是一定的.
+//    3.数组元素的指针就是数组元素的地址
+//    访问数组元素可以使用数组名 + [下标]   或者  指向数组的指针 + [下标];
+//    下标:
+//    a[4] = 10;
+//    指针
+    
+//    int a[5] = {1,0,3,4,5};
+//    int sum = sizeof(a) / sizeof(int);
+//    printf("%d\n",sum);
+//    printf("%p  %p \n",a,&a[0]);
+//    int *p = a;                 //定义一个指针指向首地址
+////    int *p1 = &a[0];
+//    printf("%d   %d\n",*p,p[0]);
+//    printf("%d\n",*a);
+//    p[4] = 998;
+//    printf("%d\n",p[4]);
+//    printf("%d\n",*(p + 1));  //取第二个值
+//    for (int i = 0; i < sum; i ++) {
+//        printf("%d\t",*(p+i));
+//    }
+//    printf("\n");
+//    指针和数组的区别
+//    相同:指针和数组名都可以通过下标和指针访问数组元素.
+//    不同:1.指针可以改变指向的
+//        2.数组名是常量,表示首地址,是不能改变的
+//    指针占8个字节
+//    数组存储空间:元素个数 * 对应类型所占字节数
+//    注意: 指针类型和数组元素类型要匹配
+//    short a[4] = {3,4,6,8};
+//    int * p = a;
+//    printf("%s\n",*p);
+#pragma mark    指针和字符串.
+//    str 是存在栈区的,常量字符串拷贝的副本存在字符数组中,数组中的值是可以改变的
+//    char str[] = "hello";
+//    str[2] = 'w';
+//    char s = 's';
+//    char *p = str;
+//    *p = 'q';    //修改元素值
+//    *(p + 1) = 'w';
+//    p[4] = 't';
+//    for (int i = 0; i < 5; i ++) {
+//        printf("%c\t",*(p+i));
+//    }
+//  常量字符串,存储在常量区,只能访问不能修改.
+//  char *p1 = "huige";
+//    printf("%s",p);
+//    指针既可以访问字符,也可以访问字符串
+    
+    
+    
+//    总结: 指向数组的指针可以访问和修改数组元素;
+//    指向常量字符串的指针,只能访问字符串的字符,不能修改
+//    指针的重指向
+//    char a[] ="anyuechao";
+//    char b[25] = {0};
+//    char *c  = a;
+//   // c = "wangltiezhu";
+//    strcat(b, a);
+////    strcat(c, a); //c 指向的内容不能修改.
+//    int count = 0;
+//    while ((*(c++))!= '\0') {
+//         count ++;
+//    }
+//    printf("%d\n",count);
+#pragma mark 指针数组
+//    char a[][8] = {"jack","rose","captain"};
+//    char *p[3]  = {"jack","rose","captain"};
+//    printf("%s\n",p[0]);
+////    p包含三个元素,每个元素都是char 类型的指针
+////    指针指向常量区的字符串
+////    指针   字符串
+////    p[0] "jack"
+////    p[1]  "rose"
+////    p[2]  "caption"
+//    printf("%s\n",*p);
+////    重指向
+//    p[1] = "dachui";
+//    printf("%s\n",p[1]);
+#pragma mark 指针函数
+//    指针和函数.指针作为函数的参数
+//    定义函数,交换两个整形变量的值
+    
+    
+    
+    
+    int a  =1,b = 2;
+  //  hah(1, 2);
+    haha(&a, &b);
+    int c[5] = {1,2,5,3,6};
+    buff(c, 5);
+    buffe(c, 5);
+    
+    
+    
+    return 0;
+}
